@@ -3,31 +3,30 @@
 public class Main {
     public static void main(String[] args) {
 
-        Employee em = new Employee();
-        em.setName("Jack");
-        em.getName();
-        System.out.println(em.getName());
-        System.out.println(em);
+
+        Employee originalEm = new Employee("Alhaj");
+        originalEm.getName();
+        System.out.println(originalEm.getName());
+        System.out.println(originalEm);
+
+
         //Use the clone method to get the Employee object
         try {
-            Employee empsNew = (Employee) em.clone();
-            empsNew.setName("Alhaj");
-            empsNew.getName();
-            System.out.println(empsNew.getName());
-            System.out.println(empsNew);
+            Employee shallowClone = originalEm.clone();
+            shallowClone.getName();
+            System.out.println(shallowClone.getName());
+            System.out.println(shallowClone);
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
 
 
         try {
-            Employee empsNew1 = (Employee) em.clone();
-
-            empsNew1.setName("Jonh");
-            empsNew1.getName();
-            System.out.println(empsNew1.getName());
-            System.out.println(empsNew1);
-        } catch (CloneNotSupportedException e) {
+            Employee deepClone = new Employee(originalEm);
+            deepClone.getName();
+            System.out.println(deepClone.getName());
+            System.out.println(deepClone);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
